@@ -1,0 +1,6 @@
+<svg width="30" height="18" viewBox="0 0 30 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd"
+    d="M0 9C0 8 6 0 15 0C24 0 30 8 30 9C30 10 24 18 15 18C6 18 0 10 0 9ZM15 15.5C18.5899 15.5 21.5 12.5899 21.5 9C21.5 5.41015 18.5899 2.5 15 2.5C11.4101 2.5 8.5 5.41015 8.5 9C8.5 12.5899 11.4101 15.5 15 15.5Z"
+    fill="#0019C5" />
+  <circle cx="15" cy="9" r="4" fill="#0019C5" />
+</svg>

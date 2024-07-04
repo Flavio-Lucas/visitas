@@ -1,0 +1,25 @@
+.visit-list-table-container {
+  padding: 10px 20px;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px 0px #00000040 !important;
+  border-radius: 1rem !important;
+}
+
+.visit-list-table-pagination-container {
+  margin-top: 1rem;
+  box-shadow: 0px 4px 4px 0px #00000040 !important;
+  border-radius: 1rem !important;
+}
+
+.visit-list-table-header > th {
+  font-weight: bolder;
+  border-bottom: #015FE8 2px solid;
+  color: #010100B2;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 475px) {
+  .visit-list-table-filters {
+    flex-direction: column;
+  }
+}

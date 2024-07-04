@@ -1,0 +1,9 @@
+.visit-list-table-filters {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.visit-list-table-filters > div:nth-child(1n) {
+  width: 100%;
+}

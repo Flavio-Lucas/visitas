@@ -1,0 +1,7 @@
+.MuiTablePagination-spacer {
+  display: none;
+}
+
+.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar > .css-16c50h-MuiInputBase-root-MuiTablePagination-select {
+  margin-right: auto;
+}

@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  width: 100%;
+  margin: 0 !important;
+  margin-bottom: 1rem !important;
+  box-shadow: 0px 4px 28px -8px #00000040;
+}
+
+.header {
+  width: 100%;
+}
