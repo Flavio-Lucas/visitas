@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import VisitaList from './VisitaList';
-import { getVisitas } from '../../services/api';
+import { fetchVisits } from '../../services/api';
 
 jest.mock('../services/api');
 
@@ -13,7 +13,7 @@ const mockVisitas = [
 
 describe('VisitaList Component', () => {
   it('renders visitas data', async () => {
-    (getVisitas as jest.Mock).mockResolvedValue(mockVisitas);
+    (fetchVisits as jest.Mock).mockResolvedValue(mockVisitas);
 
     render(<VisitaList />);
 
@@ -22,7 +22,7 @@ describe('VisitaList Component', () => {
   });
 
   it('shows loading state initially', () => {
-    (getVisitas as jest.Mock).mockResolvedValue(mockVisitas);
+    (fetchVisits as jest.Mock).mockResolvedValue(mockVisitas);
 
     render(<VisitaList />);
 
