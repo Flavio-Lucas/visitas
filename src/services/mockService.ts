@@ -5,8 +5,15 @@ import { visitors, owners } from '../data/visits'
 import { UserInterface } from '../models/interfaces/user.interface';
 import { Filters } from '../utils/utils';
 
-export const getVisitById = (id: number): Visit | undefined => {
-  return visits.find(visit => visit.id === id);
+export const getVisitById = (id: number): Visit | null => {
+  const visita = visits.find(visit => visit.id === id);
+  if (!visita) return null;
+
+  visita.visitors = visitors;
+  visita.broker = getCorretorById(visita?.broker_id || 0);
+  visita.location = getApartamentoById(visita?.location_id || 0);
+
+  return visita;
 };
 
 export const getMockedOwnerById = (id: number): UserInterface | undefined => {
@@ -49,9 +56,6 @@ const applyFilters = (visits: Visit[], filters?: Filters): Visit[] => {
   });
 };
 
-
-
-
 export const getAllVisitsWithDetails = (filters?: Filters): Visit[] => {
   const detailedVisits = visits.map(visit => ({
     ...visit,
@@ -59,10 +63,9 @@ export const getAllVisitsWithDetails = (filters?: Filters): Visit[] => {
     broker: getCorretorById(visit.broker_id),
     location: getApartamentoById(visit.location_id),
   }));
-  
+
   return applyFilters(detailedVisits, filters);
 };
-
 
 // Função para obter um visitante pelo ID
 const getVisitanteById = (id: number): UserInterface | undefined => {

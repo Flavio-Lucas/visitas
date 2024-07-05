@@ -3,5 +3,7 @@ export interface UserInterface {
   name: string,
   email: string,
   cpf: string,
-  isVisitor?: boolean
+  isVisitor?: boolean,
+  avatarUrl: string,
+  status: boolean,
 }

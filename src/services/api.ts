@@ -20,7 +20,6 @@ export const fetchVisits = async (filters?: Filters): Promise<Visit[]> => {
   }
 };
 
-
 export const getOwnerById = async (id: number): Promise<UserInterface | undefined> => {
   if (environment.mock) {
     return getMockedOwnerById(id);
@@ -29,7 +28,7 @@ export const getOwnerById = async (id: number): Promise<UserInterface | undefine
   }
 };
 
-export const getVisitDetailsById = async (id: number): Promise<Visit | undefined> => {
+export const getVisitDetailsById = async (id: number): Promise<Visit | null> => {
   if (environment.mock) {
     return getVisitById(id);
   } else {

@@ -33,7 +33,7 @@ const App: React.FC = () => {
 
   return (
     <>
-    <Header userName={currentUser.name} loading={loading} condoName={currentUser.condoName}></Header>
+      <Header userName={currentUser.name} loading={loading} condoName={currentUser.condoName}></Header>
       <Router>
         <Routes>
           <Route path="/" element={<VisitasPage />} />

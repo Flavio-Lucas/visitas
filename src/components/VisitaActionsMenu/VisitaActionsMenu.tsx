@@ -58,16 +58,18 @@ const VisitaActionsMenu: React.FC<VisitaActionsMenuProps> = ({ visit, handleOpen
           <CancelRoundedIcon sx={{ marginRight: '0.5rem' }} />
           Cancelar
         </MenuItem>}
-        {!visit.awareness && visit.status === VisitStatus.SCHEDULED && <MenuItem onClick={() => { handleClose(); handleApprove(); }}>
+        {!visit.awareness && visit.status === VisitStatus.SCHEDULED && <MenuItem onClick={() => { handleApprove(); }}>
           <ThumbUpRoundedIcon sx={{ marginRight: '0.5rem' }} />
           Estou ciente
         </MenuItem>}
-        <MenuItem  onClick={handleClose}>
-        <Link to={'concluir/' + openId}>
-          <CheckCircleRoundedIcon sx={{ marginRight: '0.5rem' }} />
-          Concluir Visita
-        </Link>
-        </MenuItem>
+        {(visit.status === VisitStatus.GOING || visit.status === VisitStatus.SCHEDULED) && <MenuItem onClick={handleClose}>
+          <Link style={{
+            display: 'flex'
+          }} to={'concluir/' + openId}>
+            <CheckCircleRoundedIcon sx={{ marginRight: '0.5rem' }} />
+            Concluir Visita
+          </Link>
+        </MenuItem>}
       </Menu>
       <Modal
         open={openedCancelModal}
@@ -86,7 +88,7 @@ const VisitaActionsMenu: React.FC<VisitaActionsMenuProps> = ({ visit, handleOpen
           <Box>
             <Textarea sx={{ height: '15rem' }} />;
           </Box>
-          <Button sx={{alignSelf: 'flex-end'}} onClick={() => { handleCancel(); setOpenedCancelModal(false) }} variant="contained" color="success">
+          <Button sx={{ alignSelf: 'flex-end' }} onClick={() => { handleCancel(); setOpenedCancelModal(false) }} variant="contained" color="success">
             Confirmar
           </Button>
         </Box>

@@ -9,12 +9,17 @@ import { VisitStatus } from '../../models/enums/status.enum';
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
 import TuneIcon from '@mui/icons-material/Tune';
-import { Box, Button, IconButton, InputBase, Paper } from '@mui/material';
+import { Box, Button, IconButton, InputBase, Modal, Paper, Typography } from '@mui/material';
 import { Filters } from '../../utils/utils';
+import CloseIcon from '@mui/icons-material/Close';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+
 let filters: Filters = {};
+
 const VisitaList: React.FC = () => {
 
   const [showFilters, setShowFilters] = useState<boolean>(false);
+  const [openedApproveModal, setOpenedApproveModal] = useState<boolean>(false);
   const [visits, setVisits] = useState<Visit[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [openedModal, setOpenedModal] = useState<boolean>(false);
@@ -45,6 +50,7 @@ const VisitaList: React.FC = () => {
   };
 
   const handleCancel = () => {
+    console.log(selectedVisit);
     const index = visits.findIndex(v => v.id === selectedVisit?.id);
     const tempVisit = visits;
     tempVisit[index].status = VisitStatus.CANCELED;
@@ -53,6 +59,7 @@ const VisitaList: React.FC = () => {
   };
 
   const handleApprove = () => {
+    setOpenedApproveModal(true);
     const index = visits.findIndex(v => v.id === selectedVisit?.id);
     const tempVisit = visits;
     tempVisit[index].awareness = true;
@@ -186,6 +193,30 @@ const VisitaList: React.FC = () => {
         handleChangeTab={handleChangeTab}
         selectedVisit={selectedVisit}
       />
+
+      <Modal
+        open={openedApproveModal}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box display='flex' flexDirection="column" className="modal-visit-details">
+          <Box display="flex" alignItems="center" justifyContent="space-between">
+            <Typography variant="h5" component="h1">Você marcou que está ciente da visita.</Typography>
+            <IconButton sx={{ p: '10px' }} aria-label="menu">
+              <CloseIcon sx={{ cursor: 'pointer' }} />
+            </IconButton>
+          </Box>
+          <Box display="flex" alignItems="center" gap="1rem" marginY="1rem">
+            <Typography>Sucesso!</Typography>
+            <CheckCircleRoundedIcon color='success'/>
+          </Box>
+          <Button sx={{ alignSelf: 'flex-end' }} onClick={() => { setOpenedApproveModal(false); handleClose() }} variant="contained" color="success">
+            Ok, entendi
+          </Button>
+        </Box>
+
+      </Modal>
     </>
   );
 };
